@@ -1,0 +1,35 @@
+// app global css in SCSS form
+.pageContainer {
+  background-color: $blue-grey-3;
+}
+
+.routerDrawer {
+  color: white;
+}
+
+.infoContainer {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  margin: 0.5rem;
+  border-radius: 0.25rem;
+  .title {
+    color: white;
+    display: block;
+    padding: 0.5rem;
+    font-weight: bold;
+    font-size: 1rem;
+    text-transform: uppercase;
+  }
+  .body {
+    background-color: white;
+    flex-grow: 1;
+    padding: 0.5rem;
+    border-bottom-right-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+  }
+}
+
+.hover-bg-color:hover {
+  background-color: $blue-grey-1;
+}
