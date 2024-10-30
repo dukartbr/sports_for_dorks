@@ -1,6 +1,7 @@
 // app global css in SCSS form
 .pageContainer {
   background-color: $blue-grey-3;
+  overflow: scroll;
 }
 
 .routerDrawer {

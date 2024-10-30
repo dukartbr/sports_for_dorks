@@ -7,22 +7,22 @@ const options = {
   },
 };
 
-function getNFLTeams() {
+async function getNFLTeams() {
   return fetch(`${baseURL}/nfl-team-list`, options)
     .then((res) => res.json())
-    .then((res) => {
-      console.log("res", res);
-      return res;
-    });
+    .then((res) => res);
 }
 
-function getTeamSchedule(id) {
+async function getTeamSchedule(id) {
   return fetch(`${baseURL}/nfl-team-schedule?id=${id}`, options)
     .then((res) => res.json())
-    .then((res) => {
-      console.log("schedule", res);
-      return res;
-    });
+    .then((res) => res);
 }
 
-export { getNFLTeams, getTeamSchedule };
+async function getTeamRoster(id) {
+  return fetch(`${baseURL}/nfl-team-roster?id=${id}`, options)
+    .then((res) => res.json())
+    .then((res) => res);
+}
+
+export { getNFLTeams, getTeamSchedule, getTeamRoster };
