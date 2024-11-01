@@ -14,6 +14,7 @@
   flex-direction: column;
   margin: 0.5rem;
   border-radius: 0.25rem;
+  overflow: hidden;
   .title {
     color: white;
     display: block;
@@ -25,9 +26,19 @@
   .body {
     background-color: white;
     flex-grow: 1;
-    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
     border-bottom-right-radius: 0.25rem;
     border-bottom-left-radius: 0.25rem;
+  }
+  .infoContainerList {
+    flex-grow: 1;
+    overflow-y: scroll;
+  }
+  #rosterContainerList {
+    // wtf we gotta do to fix this height
+    // background-color: blue;
+    max-height: 300px;
   }
 }
 

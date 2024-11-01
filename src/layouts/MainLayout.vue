@@ -7,11 +7,7 @@ import HeaderBar from "../components/HeaderBar.vue";
     <q-header elevated>
       <HeaderBar :toggleRouterSidebar="toggleRouterSidebar" />
     </q-header>
-    <q-drawer
-      v-model="routerIsOpen"
-      show-if-above
-      class="routerDrawer bg-secondary"
-    >
+    <q-drawer v-model="routerIsOpen" class="routerDrawer bg-secondary">
       <span> this is the router crap</span>
     </q-drawer>
     <q-page-container>
@@ -27,7 +23,7 @@ export default defineComponent({
   name: "MainLayout",
   data() {
     return {
-      routerIsOpen: true,
+      routerIsOpen: false,
     };
   },
   methods: {

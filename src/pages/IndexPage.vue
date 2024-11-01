@@ -5,7 +5,8 @@
         <InfoContainer title="News"> </InfoContainer>
       </div>
       <div class="row col-6">
-        <InfoContainer title="Roster"> </InfoContainer>
+        <!-- <InfoContainer title="Roster"> </InfoContainer> -->
+        <TeamRoster />
         <InfoContainer title="Betting"> </InfoContainer>
       </div>
     </div>
@@ -19,12 +20,14 @@
 import { defineComponent } from "vue";
 import InfoContainer from "../components/InfoContainer.vue";
 import TeamSchedule from "../components/TeamSchedule.vue";
+import TeamRoster from "../components/TeamRoster.vue";
 
 export default defineComponent({
   name: "IndexPage",
   components: {
     InfoContainer,
     TeamSchedule,
+    TeamRoster,
   },
 });
 </script>

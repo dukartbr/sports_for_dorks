@@ -29,7 +29,7 @@ export default defineComponent({
   data() {
     return {
       seasonYear: "",
-      events: ["Milk", "Eggs", "Coffee"],
+      events: [],
     };
   },
   components: {
@@ -38,8 +38,6 @@ export default defineComponent({
   watch: {
     selectedTeam: function (val) {
       getTeamSchedule(val.id).then((res) => {
-        console.log("the most res", res);
-        console.log("year", res.requestedSeason.year);
         this.seasonYear = res.requestedSeason.year;
         this.events = res.events;
       });
