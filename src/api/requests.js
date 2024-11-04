@@ -7,43 +7,41 @@ const options = {
   },
 };
 
-async function getNFLTeams() {
-  return fetch(`${baseURL}/nfl-team-list`, options)
-    .then((res) => res.json())
-    .then((res) => res);
+export async function getNFLTeams() {
+  const response = await fetch(`${baseURL}/nfl-team-list`, options);
+  return response.json();
 }
 
-async function getTeamSchedule(id) {
-  return fetch(`${baseURL}/nfl-team-schedule?id=${id}`, options)
-    .then((res) => res.json())
-    .then((res) => res);
+export async function getTeamSchedule(id) {
+  const response = await fetch(
+    `${baseURL}/nfl-team-schedule?id=${id}`,
+    options
+  );
+  return response.json();
 }
 
-async function getTeamRoster(id) {
-  return fetch(`${baseURL}/nfl-team-roster?id=${id}`, options)
-    .then((res) => res.json())
-    .then((res) => res);
+export async function getTeamRoster(id) {
+  const response = await fetch(`${baseURL}/nfl-team-roster?id=${id}`, options);
+  return response.json();
 }
 
-async function getTeamNews(id) {
-  return fetch(`${baseURL}/nfl-team-news?id=${id}`, options)
-    .then((res) => res.json())
-    .then((res) => res);
+export async function getTeamNews(id) {
+  const response = await fetch(`${baseURL}/nfl-team-news?id=${id}`, options);
+  return response.json();
 }
 
-async function getTeamStats(id) {
-  return fetch(
+export async function getTeamStats(id) {
+  const response = await fetch(
     `${baseURL}/nfl-team-statistics?year=${new Date().getFullYear()}&id=${id}`,
     options
-  )
-    .then((res) => res.json())
-    .then((res) => res);
+  );
+  return response.json();
 }
 
-export {
-  getNFLTeams,
-  getTeamSchedule,
-  getTeamRoster,
-  getTeamNews,
-  getTeamStats,
-};
+export async function getTeamRecords(id) {
+  const response = await fetch(
+    `${baseURL}/nfl-team-statistics?id=${id}`,
+    options
+  );
+  return response.json();
+}
