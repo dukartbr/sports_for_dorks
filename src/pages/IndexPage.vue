@@ -8,8 +8,11 @@
         <div class="column col-4">
           <TeamRoster />
         </div>
-        <div class="column col-8">
+        <div class="column col-4">
           <TeamStatsSummary />
+        </div>
+        <div class="column col-4">
+          <TeamRecordsSummary />
         </div>
       </div>
     </div>
@@ -25,6 +28,7 @@ import TeamSchedule from "../components/TeamSchedule.vue";
 import TeamRoster from "../components/TeamRoster.vue";
 import TeamNews from "../components/TeamNews.vue";
 import TeamStatsSummary from "../components/TeamStatsSummary.vue";
+import TeamRecordsSummary from "../components/TeamRecordsSummary.vue";
 
 export default defineComponent({
   name: "IndexPage",
@@ -33,6 +37,7 @@ export default defineComponent({
     TeamRoster,
     TeamNews,
     TeamStatsSummary,
+    TeamRecordsSummary,
   },
 });
 </script>
