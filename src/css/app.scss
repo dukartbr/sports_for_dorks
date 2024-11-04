@@ -14,7 +14,7 @@
   flex-direction: column;
   margin: 0.5rem;
   border-radius: 0.25rem;
-  overflow: hidden;
+  overflow-y: scroll;
   .title {
     color: white;
     display: block;
@@ -30,15 +30,10 @@
     flex-direction: column;
     border-bottom-right-radius: 0.25rem;
     border-bottom-left-radius: 0.25rem;
-  }
-  .infoContainerList {
+    // ???? WHY DO I NEED THIS
+    height: 300px;
     flex-grow: 1;
     overflow-y: scroll;
-  }
-  #rosterContainerList {
-    // wtf we gotta do to fix this height
-    // background-color: blue;
-    max-height: 300px;
   }
 }
 

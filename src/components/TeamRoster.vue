@@ -1,15 +1,29 @@
 <template>
   <InfoContainer title="Roster">
-    <div id="rosterContainerList" class="infoContainerList">
+    <div class="infoContainerList">
       <q-list bordered separator dense>
-        <q-item clickable v-ripple v-for="athlete in roster" :key="athlete.id">
+        <q-item
+          clickable
+          v-ripple
+          v-for="athlete in roster"
+          :key="athlete.id"
+          class="rosterItem"
+        >
+          <div class="row">
+            <q-avatar size="xl">
+              <img :src="athlete.headshot?.href" />
+            </q-avatar>
+          </div>
+
           <q-item-section>
-            <q-item-label>{{ athlete.fullName }}</q-item-label>
+            <q-item-label
+              >{{ athlete.jersey }} - {{ athlete.fullName }}</q-item-label
+            >
+            <q-item-label caption>{{ athlete.position }}</q-item-label>
           </q-item-section>
         </q-item>
       </q-list>
     </div>
-    <div>This is the roster</div>
   </InfoContainer>
 </template>
 
@@ -39,7 +53,6 @@ export default {
   watch: {
     selectedTeam: function (val) {
       getTeamRoster(val.id).then((res) => {
-        console.log("res", res);
         this.roster = res.athletes;
       });
     },

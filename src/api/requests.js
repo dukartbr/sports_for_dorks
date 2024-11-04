@@ -25,4 +25,25 @@ async function getTeamRoster(id) {
     .then((res) => res);
 }
 
-export { getNFLTeams, getTeamSchedule, getTeamRoster };
+async function getTeamNews(id) {
+  return fetch(`${baseURL}/nfl-team-news?id=${id}`, options)
+    .then((res) => res.json())
+    .then((res) => res);
+}
+
+async function getTeamStats(id) {
+  return fetch(
+    `${baseURL}/nfl-team-statistics?year=${new Date().getFullYear()}&id=${id}`,
+    options
+  )
+    .then((res) => res.json())
+    .then((res) => res);
+}
+
+export {
+  getNFLTeams,
+  getTeamSchedule,
+  getTeamRoster,
+  getTeamNews,
+  getTeamStats,
+};

@@ -1,13 +1,6 @@
 <template>
   <q-toolbar class="row items-center q-py-sm q-px-lg" style="width: 100%">
-    <q-btn
-      flat
-      dense
-      round
-      icon="menu"
-      aria-label="Menu"
-      @click="toggleRouterSidebar"
-    />
+    <q-btn flat dense round icon="menu" aria-label="Menu" />
     <q-toolbar-title> Sports For Dorks </q-toolbar-title>
     <q-space />
     <q-btn-dropdown color="secondary" :label="label">
