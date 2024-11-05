@@ -30,17 +30,17 @@ export async function getTeamNews(id) {
   return response.json();
 }
 
-export async function getTeamStats(id) {
+export async function getTeamStats(id, year) {
   const response = await fetch(
-    `${baseURL}/nfl-team-statistics?year=${new Date().getFullYear()}&id=${id}`,
+    `${baseURL}/nfl-team-statistics?year=${year}&id=${id}`,
     options
   );
   return response.json();
 }
 
-export async function getTeamRecords(id) {
+export async function getTeamRecords(id, year) {
   const response = await fetch(
-    `${baseURL}/nfl-team-statistics?id=${id}`,
+    `${baseURL}/nfl-team-record?id=${id}&year=${year}`,
     options
   );
   return response.json();

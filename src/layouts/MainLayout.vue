@@ -8,7 +8,7 @@ import HeaderBar from "../components/HeaderBar.vue";
       <HeaderBar :toggleRouterSidebar="toggleRouterSidebar" />
     </q-header>
     <q-drawer v-model="routerIsOpen" class="routerDrawer bg-secondary">
-      <span> this is the router crap</span>
+      <span>This is where the router will go</span>
     </q-drawer>
     <q-page-container>
       <router-view />

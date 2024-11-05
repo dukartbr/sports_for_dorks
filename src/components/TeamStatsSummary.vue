@@ -1,6 +1,10 @@
 <template>
-  <InfoContainer :title="title">
-    <q-list bordered class="rounded-borders">
+  <InfoContainer
+    title="Stats By Year"
+    :year="selectedYear"
+    @yearChanged="onYearChange"
+  >
+    <q-list bordered separator class="rounded-borders">
       <q-expansion-item
         v-for="dataPoint in dataPoints"
         expand-separator
@@ -29,11 +33,11 @@
           <q-item>
             <div class="row full-width">
               <div class="column col-6">
-                <q-item-label caption>Total</q-item-label>
+                <q-item-label caption>Season Total</q-item-label>
                 <q-item-label class="text-bold">{{ stat.value }}</q-item-label>
               </div>
               <div class="column col-6">
-                <q-item-label caption>Rank</q-item-label>
+                <q-item-label caption>League Rank</q-item-label>
                 <q-item-label class="text-bold">{{ stat.rank }}</q-item-label>
               </div>
             </div>
@@ -55,30 +59,34 @@ export default {
   setup() {
     const store = useTeamStore();
     const selectedTeam = computed(() => store.selectedTeam);
-    const title = `${new Date().getFullYear()} Stats`;
     return {
       selectedTeam,
-      title,
     };
   },
   data() {
     return {
       dataPoints: [],
+      selectedYear: new Date().getFullYear(), // Define selectedYear
     };
   },
   components: {
     InfoContainer,
   },
-  watch: {
-    selectedTeam: function (val) {
-      getTeamStats(val.id).then(({ statistics }) => {
-        console.log(
-          `some stats for ${val.name}`,
-          statistics?.splits?.categories
-        );
-        this.dataPoints = statistics?.splits?.categories;
-      });
+  methods: {
+    onYearChange(newYear) {
+      this.selectedYear = newYear;
     },
+    fetchStats() {
+      getTeamStats(this.selectedTeam.id, this.selectedYear).then(
+        ({ statistics }) => {
+          this.dataPoints = statistics?.splits?.categories;
+        }
+      );
+    },
+  },
+  watch: {
+    selectedTeam: "fetchStats",
+    selectedYear: "fetchStats",
   },
 };
 </script>

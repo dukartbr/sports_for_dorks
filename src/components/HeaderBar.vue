@@ -1,9 +1,16 @@
 <template>
   <q-toolbar class="row items-center q-py-sm q-px-lg" style="width: 100%">
-    <q-btn flat dense round icon="menu" aria-label="Menu" />
-    <q-toolbar-title> Sports For Dorks </q-toolbar-title>
+    <q-btn
+      flat
+      dense
+      round
+      icon="menu"
+      aria-label="Menu"
+      @click="toggleRouterSidebar"
+    />
+    <q-toolbar-title>Sports4Dorks</q-toolbar-title>
     <q-space />
-    <q-btn-dropdown color="secondary" :label="label">
+    <q-btn-dropdown color="secondary" unelevated :label="label">
       <q-list>
         <q-item
           v-for="team in teams"
