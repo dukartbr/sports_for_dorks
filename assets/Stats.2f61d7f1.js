@@ -1,0 +1,1 @@
+import{Q as t}from"./QPage.632678b6.js";import{_ as a,s as e,t as r}from"./index.1b00b384.js";import"./render.fa539d76.js";const o={name:"StatsPage"};function s(c,n,p,_,f,i){return e(),r(t,{padding:""})}var $=a(o,[["render",s]]);export{$ as default};

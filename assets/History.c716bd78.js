@@ -1,0 +1,1 @@
+import{Q as a}from"./QPage.632678b6.js";import{_ as e,s as r,t as s,u as o,B as n}from"./index.1b00b384.js";import"./render.fa539d76.js";const p={name:"HistoryPage"};function i(c,t,d,f,_,m){return r(),s(a,{padding:""},{default:o(()=>t[0]||(t[0]=[n("span",null,"History Page",-1)])),_:1})}var x=e(p,[["render",i]]);export{x as default};

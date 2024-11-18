@@ -1,0 +1,1 @@
+import{Q as t}from"./QPage.632678b6.js";import{_ as a,s as r,t as s,u as o,B as n}from"./index.1b00b384.js";import"./render.fa539d76.js";const p={name:"RosterPage"};function c(d,e,f,i,_,m){return r(),s(t,{padding:""},{default:o(()=>e[0]||(e[0]=[n("span",null,"Roster",-1)])),_:1})}var B=a(p,[["render",c]]);export{B as default};
