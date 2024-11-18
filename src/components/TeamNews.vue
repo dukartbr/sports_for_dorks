@@ -1,11 +1,27 @@
 <template>
   <InfoContainer title="News">
-    <q-carousel animated v-model="slide" arrows infinite autoplay="2000">
+    <template #action>
+      <q-btn
+        flat
+        round
+        color="white"
+        :icon="autoplayEnabled ? 'pause' : 'play_arrow'"
+        @click="autoplayEnabled = !autoplayEnabled"
+      />
+    </template>
+    <q-carousel
+      animated
+      v-model="slide"
+      arrows
+      infinite
+      :autoplay="autoplayEnabled ? 4000 : null"
+    >
       <q-carousel-slide
         v-for="article in articles"
         :key="article.dataSourceIdentifier"
         :name="article.dataSourceIdentifier"
         :img-src="article.images[0].url"
+        @click="showArticle(article)"
       >
         <div
           class="bg-primary absolute-bottom custom-caption q-pa-md text-white"
@@ -16,11 +32,18 @@
       </q-carousel-slide>
     </q-carousel>
   </InfoContainer>
+  <!-- <q-dialog v-model="showModal">
+    <q-card>
+      <q-card-section>
+        <div class="text-h6">Chingy</div>
+      </q-card-section>
+    </q-card>
+  </q-dialog> -->
 </template>
 
 <script>
 import { computed, ref, watch } from "vue";
-import { getTeamNews } from "../api/requests";
+import { getTeamNews, getTeamNewsArticle } from "../api/requests";
 import { useTeamStore } from "src/stores/team";
 import InfoContainer from "./InfoContainer.vue";
 
@@ -58,12 +81,27 @@ export default {
     };
   },
   data() {
-    return {};
+    return {
+      showModal: false,
+      fullArticle: null,
+      autoplayEnabled: true,
+    };
   },
   components: { InfoContainer },
+  methods: {
+    showArticle: function (val) {
+      console.log("val", val);
+      this.showModal = true;
+      getTeamNewsArticle(val.dataSourceIdentifier).then((res) => {
+        console.log("res", res);
+        this.fullArticle = res;
+      });
+    },
+  },
   watch: {
     selectedTeam: function (val) {
       getTeamNews(val.id).then((res) => {
+        console.log("res.articles", res.articles);
         this.articles = res.articles;
       });
     },

@@ -4,9 +4,9 @@ import { setCssVar } from "quasar";
 
 export const useTeamStore = defineStore("team", {
   state: () => ({
-    // selectedTeam: localStorage.getItem("sports4DorksSelectedTeam")
-    //   ? JSON.parse(localStorage.getItem("sports4DorksSelectedTeam"))
-    //   : null,
+    selectedTeam: localStorage.getItem("sports4DorksSelectedTeam")
+      ? JSON.parse(localStorage.getItem("sports4DorksSelectedTeam"))
+      : null,
     selectedTeam: null,
   }),
 
@@ -14,7 +14,8 @@ export const useTeamStore = defineStore("team", {
     setTeam(team) {
       const { luminosity, lighten } = colors;
       this.selectedTeam = team;
-      // localStorage.setItem("sports4DorksSelectedTeam", JSON.stringify(team));
+      // console.log("team", team);
+      localStorage.setItem("sports4DorksSelectedTeam", JSON.stringify(team));
       // SET TEAM COLORS
       setCssVar("primary", `#${team.color}`);
       // ensures we don't blend font/backgroundcolor

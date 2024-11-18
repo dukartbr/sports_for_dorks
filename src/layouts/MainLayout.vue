@@ -1,15 +1,20 @@
 <script setup>
 import HeaderBar from "../components/HeaderBar.vue";
+import RouterSidebar from "../components/RouterSidebar.vue";
+import { ref } from "vue";
+
+const routerIsOpen = ref(false);
+function toggleRouterSidebar() {
+  routerIsOpen.value = !routerIsOpen.value;
+}
 </script>
 
 <template>
   <q-layout view="hHh lpR fFf">
     <q-header elevated>
-      <HeaderBar :toggleRouterSidebar="toggleRouterSidebar" />
+      <HeaderBar @toggle-sidebar="toggleRouterSidebar" />
     </q-header>
-    <q-drawer v-model="routerIsOpen" class="routerDrawer bg-secondary">
-      <span>Add Routes</span>
-    </q-drawer>
+    <RouterSidebar :isOpen="routerIsOpen" />
     <q-page-container>
       <router-view />
     </q-page-container>
@@ -21,6 +26,9 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "MainLayout",
+  components: {
+    RouterSidebar,
+  },
   data() {
     return {
       routerIsOpen: false,

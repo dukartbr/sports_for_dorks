@@ -1,9 +1,8 @@
 <template>
-  <InfoContainer
-    title="Stats By Year"
-    :year="selectedYear"
-    @yearChanged="onYearChange"
-  >
+  <InfoContainer title="Stats By Year">
+    <template #action>
+      <YearSelect :year="selectedYear" @yearChanged="onYearChange" />
+    </template>
     <q-list bordered separator class="rounded-borders">
       <q-expansion-item
         v-for="dataPoint in dataPoints"
@@ -53,6 +52,7 @@ import { computed } from "vue";
 import { useTeamStore } from "src/stores/team";
 import { getTeamStats } from "../api/requests";
 import InfoContainer from "./InfoContainer.vue";
+import YearSelect from "./YearSelect.vue";
 
 export default {
   name: "TeamStatsSummary",
@@ -71,6 +71,7 @@ export default {
   },
   components: {
     InfoContainer,
+    YearSelect,
   },
   methods: {
     onYearChange(newYear) {

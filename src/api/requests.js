@@ -25,8 +25,18 @@ export async function getTeamRoster(id) {
   return response.json();
 }
 
+export async function getPlayerDetails(id) {
+  const response = await fetch(`${baseURL}/nfl-ath-fullinfo?id=${id}`, options);
+  return response.json();
+}
+
 export async function getTeamNews(id) {
   const response = await fetch(`${baseURL}/nfl-team-news?id=${id}`, options);
+  return response.json();
+}
+
+export async function getTeamNewsArticle(id) {
+  const response = await fetch(`${baseURL}/nfl-single-news?id=${id}`, options);
   return response.json();
 }
 

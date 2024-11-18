@@ -1,3 +1,10 @@
+<style scoped>
+.teamListItem {
+  width: 300px;
+  text-align: center;
+}
+</style>
+
 <template>
   <q-toolbar class="row items-center q-py-sm q-px-lg" style="width: 100%">
     <q-btn
@@ -10,12 +17,17 @@
     />
     <q-toolbar-title>Sports4Dorks</q-toolbar-title>
     <q-space />
-    <q-btn-dropdown color="secondary" unelevated :label="label">
+    <q-btn-dropdown
+      color="secondary"
+      unelevated
+      :label="label"
+      :icon="selectedTeam ? `img:${selectedTeam.logos[0].href}` : ''"
+    >
       <q-list>
         <q-item
           v-for="team in teams"
           :key="team.id"
-          class="hover-bg-color"
+          class="hover-bg-color teamListItem"
           clickable
           v-close-popup
           @click="setTeam(team)"
@@ -53,7 +65,6 @@ export default {
       selectedTeam,
     };
   },
-  props: ["toggleRouterSidebar"],
   data() {
     return {
       teams: [],
@@ -61,6 +72,11 @@ export default {
   },
   created() {
     getNFLTeams().then(({ teams }) => (this.teams = { ...teams }));
+  },
+  methods: {
+    toggleRouterSidebar: function () {
+      this.$emit("toggle-sidebar");
+    },
   },
   computed: {
     label() {

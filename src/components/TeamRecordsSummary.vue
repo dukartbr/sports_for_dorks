@@ -1,9 +1,8 @@
 <template>
-  <InfoContainer
-    title="Records By Year"
-    :year="selectedYear"
-    @yearChanged="onYearChange"
-  >
+  <InfoContainer title="Records By Year">
+    <template #action>
+      <YearSelect :year="selectedYear" @yearChanged="onYearChange" />
+    </template>
     <q-list bordered separator class="rounded-borders">
       <q-expansion-item
         v-for="record in records"
@@ -39,6 +38,7 @@ import { computed } from "vue";
 import { useTeamStore } from "src/stores/team";
 import { getTeamRecords } from "../api/requests";
 import InfoContainer from "./InfoContainer.vue";
+import YearSelect from "./YearSelect.vue";
 
 export default {
   name: "TeamRecordsSummary",
@@ -57,6 +57,7 @@ export default {
   },
   components: {
     InfoContainer,
+    YearSelect,
   },
   methods: {
     onYearChange(newYear) {

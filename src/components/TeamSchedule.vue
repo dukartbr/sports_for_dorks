@@ -1,5 +1,8 @@
 <template>
   <InfoContainer :title="`${seasonYear} Season`">
+    <template #action>
+      <span class="title">Record&nbsp;{{ record }}</span>
+    </template>
     <q-list bordered separator dense>
       <q-item
         clickable
@@ -7,10 +10,10 @@
         v-for="event in events"
         :key="event"
         :class="
-          event.competitions[0].boxscoreAvailable
+          event.competitions[0]?.status.type.completed
             ? event.competitions[0].competitors.filter(
                 (t) => t.id == selectedTeam.id
-              )[0].winner
+              )[0]?.winner
               ? 'bg-green-3'
               : 'bg-red-3'
             : ''
@@ -67,6 +70,7 @@ export default defineComponent({
   },
   data() {
     return {
+      record: "",
       seasonYear: "",
       events: [],
     };
@@ -78,8 +82,9 @@ export default defineComponent({
     selectedTeam: function (val) {
       getTeamSchedule(val.id).then((res) => {
         this.seasonYear = res.requestedSeason.year;
-        console.log("res", res);
+        this.record = res.team.recordSummary;
         this.events = res.events;
+        console.log("events", this.events);
       });
     },
   },

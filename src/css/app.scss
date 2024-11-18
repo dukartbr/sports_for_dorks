@@ -8,6 +8,15 @@
   color: white;
 }
 
+.title {
+  color: white;
+  display: block;
+  padding: 0.5rem;
+  font-weight: bold;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
 .infoContainer {
   display: flex;
   flex-grow: 1;
@@ -15,14 +24,6 @@
   margin: 0.5rem;
   border-radius: 0.25rem;
   overflow-y: scroll;
-  .title {
-    color: white;
-    display: block;
-    padding: 0.5rem;
-    font-weight: bold;
-    font-size: 1rem;
-    text-transform: uppercase;
-  }
   .body {
     background-color: white;
     flex-grow: 1;
@@ -39,4 +40,12 @@
 
 .hover-bg-color:hover {
   background-color: $blue-grey-1;
+}
+
+.q-carousel__slide {
+  background-position: top;
+}
+
+.infoModal {
+  min-width: 600px;
 }
